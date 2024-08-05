@@ -1,0 +1,5 @@
+1) Faça um programa que receba n números e em seguida exiba a sequência digitada ao contrário.
+
+2) Faça um programa que receba uma string. Em seguida, troque as as vogais a, e, i, o, u pelos números 1, 2, 3, 4, 5, respectivamente. Utilize o comando switch.
+
+3) Faça um programa que verifica se uma string digitada pelo usuário é um PALÍNDROMO.
