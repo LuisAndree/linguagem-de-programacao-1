@@ -1,0 +1,21 @@
+1) Faça um programa que utiliza 3 ponteiros (char, int, double) onde cada um aponta para uma variável. O programa deverá exibir:
+a) o conteúdo das variáveis apontadas através do ponteiros;
+b) o endereço das variáveis apontadas;
+c) o endereço de cada ponteiro.
+
+2) Faça um programa que exibe os endereços de um vetor de números do tipo 'float' através de um ponteiro variável.
+
+3) Faça um programa com uma estrutura Atleta(nome, idade, modalidade) e implemente as funções com os seguintes protótipos:
+
+void cadastrarAtleta(struct Atleta *atleta);
+void imprimirDados(struct Altleta atleta);
+
+4) Utilizando a alocação dinâmica, faça uma programa que armazena n notas e exiba a média aritmética.
+
+Desenvolver programa com as seguintes funções:
+1 - Cadastro
+2 - Exibir todos os registros
+3 - Localizar registro
+4 - Editar registro
+5 - Excluir registro
+O programa deverá gravar os registros em arquivos (no modo binário).
