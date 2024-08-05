@@ -1,0 +1,11 @@
+1) Faça um programa que exiba um histograma da variação de temperatura durante a semana. Por exemplo, se as temperaturas forem: 26, 28, 21, 29, 30, 27, 26 graus, de domingo a sábado, respectivamente, o algoritmo deverá exibir:
+
+D: **************************
+S: ****************************
+T: *********************
+Q: *****************************
+Q: ******************************
+S: ***************************
+S: **************************
+
+2) Faça um programa que recebe um texto do usuário. Em seguida, o programa deverá exibir o histograma de acordo com a ocorrências dos caracteres presentes no texto.
