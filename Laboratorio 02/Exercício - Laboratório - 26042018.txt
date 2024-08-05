@@ -1,0 +1,11 @@
+1) Faça um programa que armazene n palavras em uma matriz. Em seguida, o programa deverá exibir:
+a) a quantidade de caracteres em cada palavras.
+b) cada palavra invertida.
+
+2) Faça um programa que recebe o valor do lado n de um quadrado e o símbolo s que será utilizado para desenhar suas as bordas.
+
+@@@@@
+@   @
+@   @
+@   @
+@@@@@
