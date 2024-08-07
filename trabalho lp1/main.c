@@ -25,6 +25,7 @@ void cadastrar();
 void exibir();
 void localizar();
 void editar();
+void excluir();
 
 int main(void)
 {
@@ -263,4 +264,57 @@ while(fread(&fixa,sizeof(DADOS),1,cadastro)==1){
         printf("\n------- APERTE UMA TECLA PARA CONTINUAR --------\n\n\n");
         getch();
         system("cls");
+}
+
+void excluir(){
+
+FILE* cadastro;
+FILE* temp;
+DADOS fixa;
+char nome[50];
+
+ cadastro = fopen("paciente.txt","rb");
+ temp = fopen("tmp.txt","wb");
+ if(cadastro == NULL && temp == NULL){
+  printf("Erro ao abrir arquivo!\n");
+  exit(1);
+ }else{
+
+  fflush(stdin);
+  printf("Digite o nome a deletar: ");
+  gets(nome);
+  printf("\n\n");
+
+while(fread(&fixa,sizeof(DADOS),1,cadastro)==1){
+   if(strcmp(nome,fixa.nome)==0){
+    printf("Nome: %s\n",fixa.nome);
+    printf("Nome da mae: %s\n",fixa.no_mae);
+    printf("Data de nascimento: %d/%d/%d\n",fixa.dat_nasc.dia, fixa.dat_nasc.mes, fixa.dat_nasc.ano);
+    printf("Peso em Kg: %.2f\n", fixa.pesoKg);
+    printf("Numero do leito: %d\n\n", fixa.leito);
+   }
+	else{
+    fwrite(&fixa,sizeof(DADOS),1,temp);
+   }
+  }
+  fclose(cadastro);
+  fclose(temp);
+  fflush(stdin);
+  printf("Deseja deletar (s/n)? ");
+  if(getche()=='s'){
+
+   if(remove("paciente.txt")==0 && rename("tmp.txt","paciente.txt")==0){
+    printf("\nOperacao realizada com sucesso!");
+   }
+   else{
+    remove("tmp.txt");
+   }
+  }
+  fclose(temp);
+  fclose(cadastro);
+    printf("\n--------------- FIM DE EXCLUSAO ----------------");
+    printf("\n------- APERTE UMA TECLA PARA CONTINUAR --------\n\n\n");
+    getch();
+    system("cls");
+    }
 }
