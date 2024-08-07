@@ -24,6 +24,7 @@ struct dados{
 void cadastrar();
 void exibir();
 void localizar();
+void editar();
 
 int main(void)
 {
@@ -179,4 +180,87 @@ void localizar(){
         getch();
         system("cls");
 
+}
+
+void editar(){
+FILE* cadastro;
+FILE* temp;
+DADOS fixa;
+char nome[50];
+
+ cadastro = fopen("paciente.txt","rb");
+ temp = fopen("tmp.txt","wb");
+ if(cadastro == NULL && temp == NULL){
+  printf("Erro ao abrir arquivo!\n");
+  exit(1);
+ }else{
+
+  fflush(stdin);
+  printf("Digite do nome do paciente para editar seus dados: ");
+  gets(nome);
+  printf("\n\n");
+
+while(fread(&fixa,sizeof(DADOS),1,cadastro)==1){
+   if(strcmp(nome,fixa.nome)==0){
+    printf("Nome: %s\n",fixa.nome);
+    printf("Nome da mae: %s\n",fixa.no_mae);
+    printf("Data de nascimento: %d/%d/%d\n",fixa.dat_nasc.dia, fixa.dat_nasc.mes, fixa.dat_nasc.ano);
+    printf("Peso em Kg: %.2f\n", fixa.pesoKg);
+    printf("Numero do leito: %d\n\n", fixa.leito);
+   }
+	else{
+    fwrite(&fixa,sizeof(DADOS),1,temp);
+   }
+  }
+  fclose(cadastro);
+  fclose(temp);
+  fflush(stdin);
+  printf("Deseja editar (s/n)? ");
+  if(getche()=='s'){
+
+   if(remove("paciente.txt")==0 && rename("tmp.txt","paciente.txt")==0){
+        cadastro = fopen("paciente.txt", "ab");
+
+    if(cadastro == NULL){
+        printf("Erro ao abrir arquivo\n");
+        exit(1);
+    }
+      else{
+
+               fflush(stdin);
+               printf("\nDigite os dados do recem nascido:\n");
+
+               fflush(stdin);
+               printf("\nNome: ");
+               gets(fixa.nome);
+
+               fflush(stdin);
+               printf("\nNome da mae: ");
+               gets(fixa.no_mae);
+
+               printf("\nData de nascimento dd/mm/aaaa:\n");
+               scanf("%d %d %d", &fixa.dat_nasc.dia, &fixa.dat_nasc.mes, &fixa.dat_nasc.ano);
+
+               fflush(stdin);
+               printf("\nPeso em Kg:");
+               scanf("%f", &fixa.pesoKg);
+
+               fflush(stdin);
+               printf("\nNumero do leito:");
+               scanf("%d", &fixa.leito);
+
+               fwrite(&fixa,sizeof(DADOS),1, cadastro);}
+
+   }
+   else{
+    remove("tmp.txt");
+   }
+  }
+  fclose(temp);
+  fclose(cadastro);
+    }
+        printf("\n--------------- FIM DE EDICAO ----------------");
+        printf("\n------- APERTE UMA TECLA PARA CONTINUAR --------\n\n\n");
+        getch();
+        system("cls");
 }
