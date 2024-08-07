@@ -22,7 +22,7 @@ struct dados{
 };
 
 void cadastrar();
-
+void exibir();
 
 int main(void)
 {
@@ -119,4 +119,29 @@ void cadastrar(){
     }
 }
 
+void exibir(){
+    FILE* cadastro;
+    DADOS fixa;
 
+    cadastro = fopen("paciente.txt", "rb");
+    printf("\n---------------Lista de cadastros:---------------\n\n ");
+
+    if(cadastro == NULL){
+        printf("Erro ao abrir arquivo\n");
+        exit(1);
+    }
+        else{
+            while(fread(&fixa,sizeof(DADOS),1,cadastro)==1){
+                    printf("\nNome: %s", fixa.nome);
+                    printf("\nNome da mae: %s", fixa.no_mae);
+                    printf("\nData de nascimento: %d/%d/%d", fixa.dat_nasc.dia, fixa.dat_nasc.mes, fixa.dat_nasc.ano);
+                    printf("\nPeso em Kg: %.2f", fixa.pesoKg);
+                    printf("\nNumero do leito: %d\n\n", fixa.leito);
+            }
+        }
+        printf("\n--------------- FIM DE EXIBICAO ----------------");
+        printf("\n------- APERTE UMA TECLA PARA CONTINUAR --------\n\n\n");
+        fclose(cadastro);
+        getch();
+        system("cls");
+}
