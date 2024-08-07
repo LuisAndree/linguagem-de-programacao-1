@@ -23,6 +23,7 @@ struct dados{
 
 void cadastrar();
 void exibir();
+void localizar();
 
 int main(void)
 {
@@ -144,4 +145,38 @@ void exibir(){
         fclose(cadastro);
         getch();
         system("cls");
+}
+
+void localizar(){
+    FILE* cadastro;
+    DADOS fixa;
+    char nome[50];
+
+    cadastro = fopen("paciente.txt", "rb");
+
+    if(cadastro == NULL){
+        printf("Erro ao abrir arquivo\n");
+        exit(1);
+    }
+        else{
+            fflush(stdin);
+            printf("\n\nDigite o nome para exibir os dados do paciente\n: ");
+            gets(nome);
+
+            while(fread(&fixa,sizeof(DADOS),1,cadastro)==1){
+                if( strcmp(nome, fixa.nome) == 0){
+                    printf("\nNome: %s", fixa.nome);
+                    printf("\nNome da mae: %s", fixa.no_mae);
+                    printf("\nData de nascimento: %d/%d/%d", fixa.dat_nasc.dia, fixa.dat_nasc.mes, fixa.dat_nasc.ano);
+                    printf("\nPeso em Kg: %.2f", fixa.pesoKg);
+                    printf("\nNumero do leito: %d\n\n", fixa.leito);
+                }
+            }
+        }
+        fclose(cadastro);
+        printf("\n--------------- FIM DE PROCURA ----------------");
+        printf("\n------- APERTE UMA TECLA PARA CONTINUAR --------\n\n\n");
+        getch();
+        system("cls");
+
 }
