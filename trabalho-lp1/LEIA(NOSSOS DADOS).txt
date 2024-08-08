@@ -1,0 +1,13 @@
+Desenvolver programa com as seguintes funções:
+1 - Cadastro 
+2 - Exibir todos os registros 
+3 - Localizar registro 
+4 - Editar registro
+5 - Excluir registro 
+O programa deverá gravar os registros em arquivos (no modo binário).
+
+
+ALUNO: LUÍS ANDRÉ TAVARES DA SILVA
+
+SOBRE O TRABALHO: Um programa de cadastro de recem 
+nascidos para uma maternidade hipotética.  
